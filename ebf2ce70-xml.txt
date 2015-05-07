@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<InfoDump application="NFC TagInfo" version="1.09c">
+  <Tag rfTechnology="Type A (ISO/IEC 14443 Type A)">
+    <GeneralInformation>
+      <Value name="uid" description="UID[4]">ebf2ce70</Value>
+      <Value name="rfTechnology" description="RF technology">Type A (ISO/IEC 14443 Type A)</Value>
+      <Value name="tagType" description="Tag type">Mifare Classic 1K</Value>
+      <Value name="atqa" description="ATQA">0004</Value>
+      <Value name="sak" description="SAK">08</Value>
+      <Value name="targetTechClasses" description="Target technology classes (Android)">android.nfc.tech.MifareClassic,
+android.nfc.tech.NfcA,
+android.nfc.tech.Ndef</Value>
+    </GeneralInformation>
+    <NdefContainer ndefTag="true" containerType="Mifare Classic as NDEF Tag">
+      <GeneralInformation>
+        <Value name="tagType" description="Tag type">Mifare Classic as NDEF Tag</Value>
+        <Value name="maxMessageSize" description="Maximum message size">284 Byte</Value>
+        <Value name="writable" description="Is tag writable?">false</Value>
+        <Value name="writeProtectable" description="Can tag be write-protected?">true</Value>
+      </GeneralInformation>
+      <NdefMessages>
+        <NdefMessage>
+          <NdefRecord>
+            <Type value="70696c65742e65653a656b616172743a32" tnf="04">EXTERNAL: urn:nfc:ext:pilet.ee:ekaart:2</Type>
+            <Payload value="66195f26063132303832325904202020205f28033233335f2701316e1b5a13333038363439303039303030323636343030355304ebf2ce70">
+              <String>f</String>
+            </Payload>
+          </NdefRecord>
+          <NdefRecord>
+            <Type value="536967" tnf="01">WELL-KNOWN: urn:nfc:wkt:Sig (Signature)</Type>
+            <Payload value="010200803a2448fca7d354a654a81bd021150d1a152d1df4d7a55d2b771f12f094eab6e5e10f2617a2f8dad4fd38aff8ea39b71c19bd42618cda86ee7e144636c8e0e7cfc4096e19c3680e09c78a0cdbc05da2d698e551d5d709717655e56fe3676880b897d2c70df5f06ece07c71435255144f8ee41af110e7b180da0e6c22fb8fdef61800025687474703a2f2f70696c65742e65652f6372742f33303836343930302d303030312e637274">
+              <String>Version 1
+Signature type: RSASSA-PKCS1-v1_5 (with SHA-1) (0x02)
+Signature:
+3a2448fca7d354a654a81bd021150d1a152d1df4d7a55d2b771f12f094eab6e5e10f2617a2f8dad4fd38aff8ea39b71c19bd42618cda86ee7e144636c8e0e7cfc4096e19c3680e09c78a0cdbc05da2d698e551d5d709717655e56fe3676880b897d2c70df5f06ece07c71435255144f8ee41af110e7b180da0e6c22fb8fdef61
+Certificate format: X.509 (0x00)
+Certificate URI:
+http://pilet.ee/crt/30864900-0001.crt</String>
+            </Payload>
+          </NdefRecord>
+        </NdefMessage>
+      </NdefMessages>
+    </NdefContainer>
+    <MemoryTag type="Mifare Classic 1K">
+      <GeneralInformation>
+        <Value name="memorySize" description="Memory size">1024 Byte</Value>
+        <Value name="blockSize" description="Block size">16 Byte</Value>
+        <Value name="numberOfBlocks" description="Number of blocks">64</Value>
+        <Value name="numberOfSectors" description="Number of sectors">16</Value>
+      </GeneralInformation>
+      <Applications>
+        <GeneralInformation>
+          <Value name="madVersion" description="MAD version">1</Value>
+          <Value name="multiApplication" description="Is multi-application card?">true</Value>
+        </GeneralInformation>
+        <Application aid="E103" madOwner="false">
+          <ApplicationString>NFC Forum (Philips SC)</ApplicationString>
+          <ClusterString>NFC Forum</ClusterString>
+          <ApplicationSector index="1" />
+          <ApplicationSector index="2" />
+          <ApplicationSector index="3" />
+          <ApplicationSector index="4" />
+          <ApplicationSector index="5" />
+          <ApplicationSector index="6" />
+        </Application>
+        <Application aid="0000" madOwner="false">
+          <ApplicationString>Sector is unused</ApplicationString>
+          <ClusterString>Card administration</ClusterString>
+          <ApplicationSector index="7" />
+          <ApplicationSector index="8" />
+          <ApplicationSector index="9" />
+          <ApplicationSector index="10" />
+          <ApplicationSector index="11" />
+          <ApplicationSector index="12" />
+          <ApplicationSector index="13" />
+          <ApplicationSector index="14" />
+          <ApplicationSector index="15" />
+        </Application>
+      </Applications>
+      <Data unit="sector:block">
+        <Sector index="0">
+          <Block index="0" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">ebf2ce70a70804006263646566676869</Block>
+          <Block index="1" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">b00003e103e103e103e103e103e10000</Block>
+          <Block index="2" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">00000000000000000000000000000000</Block>
+          <Block index="3" accessReadAccessBits="keyA|keyB" accessWriteAccessBits="keyB" accessReadKeyA="never" accessWriteKeyA="keyB" accessReadKeyB="never" accessWriteKeyB="keyB">a0a1a2a3a4a50f078fc1------------</Block>
+        </Sector>
+        <Sector index="1">
+          <Block index="0" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">03ff010194113870696c65742e65653a</Block>
+          <Block index="1" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">656b616172743a3266195f2606313230</Block>
+          <Block index="2" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">3832325904202020205f28033233335f</Block>
+          <Block index="3" accessReadAccessBits="keyA|keyB" accessWriteAccessBits="keyB" accessReadKeyA="never" accessWriteKeyA="keyB" accessReadKeyB="never" accessWriteKeyB="keyB">d3f7d3f7d3f70f078f41------------</Block>
+        </Sector>
+        <Sector index="2">
+          <Block index="0" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">2701316e1b5a13333038363439303039</Block>
+          <Block index="1" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">303030323636343030355304ebf2ce70</Block>
+          <Block index="2" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">4103000000ac536967010200803a2448</Block>
+          <Block index="3" accessReadAccessBits="keyA|keyB" accessWriteAccessBits="keyB" accessReadKeyA="never" accessWriteKeyA="keyB" accessReadKeyB="never" accessWriteKeyB="keyB">d3f7d3f7d3f70f078f41------------</Block>
+        </Sector>
+        <Sector index="3">
+          <Block index="0" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">fca7d354a654a81bd021150d1a152d1d</Block>
+          <Block index="1" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">f4d7a55d2b771f12f094eab6e5e10f26</Block>
+          <Block index="2" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">17a2f8dad4fd38aff8ea39b71c19bd42</Block>
+          <Block index="3" accessReadAccessBits="keyA|keyB" accessWriteAccessBits="keyB" accessReadKeyA="never" accessWriteKeyA="keyB" accessReadKeyB="never" accessWriteKeyB="keyB">d3f7d3f7d3f70f078f41------------</Block>
+        </Sector>
+        <Sector index="4">
+          <Block index="0" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">618cda86ee7e144636c8e0e7cfc4096e</Block>
+          <Block index="1" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">19c3680e09c78a0cdbc05da2d698e551</Block>
+          <Block index="2" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">d5d709717655e56fe3676880b897d2c7</Block>
+          <Block index="3" accessReadAccessBits="keyA|keyB" accessWriteAccessBits="keyB" accessReadKeyA="never" accessWriteKeyA="keyB" accessReadKeyB="never" accessWriteKeyB="keyB">d3f7d3f7d3f70f078f41------------</Block>
+        </Sector>
+        <Sector index="5">
+          <Block index="0" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">0df5f06ece07c71435255144f8ee41af</Block>
+          <Block index="1" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">110e7b180da0e6c22fb8fdef61800025</Block>
+          <Block index="2" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">687474703a2f2f70696c65742e65652f</Block>
+          <Block index="3" accessReadAccessBits="keyA|keyB" accessWriteAccessBits="keyB" accessReadKeyA="never" accessWriteKeyA="keyB" accessReadKeyB="never" accessWriteKeyB="keyB">d3f7d3f7d3f70f078f41------------</Block>
+        </Sector>
+        <Sector index="6">
+          <Block index="0" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">6372742f33303836343930302d303030</Block>
+          <Block index="1" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">312e637274fe00000000000000000000</Block>
+          <Block index="2" accessRead="keyA|keyB" accessWrite="never" accessIncrement="never" accessDecrementTransferRestore="never">00000000000000000000000000000000</Block>
+          <Block index="3" accessReadAccessBits="keyA|keyB" accessWriteAccessBits="keyB" accessReadKeyA="never" accessWriteKeyA="keyB" accessReadKeyB="never" accessWriteKeyB="keyB">d3f7d3f7d3f70f078f41------------</Block>
+        </Sector>
+        <Sector index="7">
+          <Block index="0" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="1" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="2" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="3" accessReadAccessBits="keyA" accessWriteAccessBits="keyA" accessReadKeyA="never" accessWriteKeyA="keyA" accessReadKeyB="keyA" accessWriteKeyB="keyA">ffffffffffffff078069ffffffffffff</Block>
+        </Sector>
+        <Sector index="8">
+          <Block index="0" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="1" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="2" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="3" accessReadAccessBits="keyA" accessWriteAccessBits="keyA" accessReadKeyA="never" accessWriteKeyA="keyA" accessReadKeyB="keyA" accessWriteKeyB="keyA">ffffffffffffff078069ffffffffffff</Block>
+        </Sector>
+        <Sector index="9">
+          <Block index="0" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="1" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="2" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="3" accessReadAccessBits="keyA" accessWriteAccessBits="keyA" accessReadKeyA="never" accessWriteKeyA="keyA" accessReadKeyB="keyA" accessWriteKeyB="keyA">ffffffffffffff078069ffffffffffff</Block>
+        </Sector>
+        <Sector index="10">
+          <Block index="0" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="1" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="2" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="3" accessReadAccessBits="keyA" accessWriteAccessBits="keyA" accessReadKeyA="never" accessWriteKeyA="keyA" accessReadKeyB="keyA" accessWriteKeyB="keyA">ffffffffffffff078069ffffffffffff</Block>
+        </Sector>
+        <Sector index="11">
+          <Block index="0" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="1" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="2" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="3" accessReadAccessBits="keyA" accessWriteAccessBits="keyA" accessReadKeyA="never" accessWriteKeyA="keyA" accessReadKeyB="keyA" accessWriteKeyB="keyA">ffffffffffffff078069ffffffffffff</Block>
+        </Sector>
+        <Sector index="12">
+          <Block index="0" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="1" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="2" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="3" accessReadAccessBits="keyA" accessWriteAccessBits="keyA" accessReadKeyA="never" accessWriteKeyA="keyA" accessReadKeyB="keyA" accessWriteKeyB="keyA">ffffffffffffff078069ffffffffffff</Block>
+        </Sector>
+        <Sector index="13">
+          <Block index="0" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="1" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="2" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="3" accessReadAccessBits="keyA" accessWriteAccessBits="keyA" accessReadKeyA="never" accessWriteKeyA="keyA" accessReadKeyB="keyA" accessWriteKeyB="keyA">ffffffffffffff078069ffffffffffff</Block>
+        </Sector>
+        <Sector index="14">
+          <Block index="0" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="1" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="2" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="3" accessReadAccessBits="keyA" accessWriteAccessBits="keyA" accessReadKeyA="never" accessWriteKeyA="keyA" accessReadKeyB="keyA" accessWriteKeyB="keyA">ffffffffffffff078069ffffffffffff</Block>
+        </Sector>
+        <Sector index="15">
+          <Block index="0" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="1" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="2" accessRead="keyA" accessWrite="keyA" accessIncrement="keyA" accessDecrementTransferRestore="keyA">00000000000000000000000000000000</Block>
+          <Block index="3" accessReadAccessBits="keyA" accessWriteAccessBits="keyA" accessReadKeyA="never" accessWriteKeyA="keyA" accessReadKeyB="keyA" accessWriteKeyB="keyA">ffffffffffffff078069ffffffffffff</Block>
+        </Sector>
+      </Data>
+    </MemoryTag>
+  </Tag>
+</InfoDump>

@@ -1,0 +1,50 @@
+Certificate:
+    Data:
+        Version: 1 (0x0)
+        Serial Number: 2 (0x2)
+    Signature Algorithm: sha1WithRSAEncryption
+        Issuer: CN=SEB_UT
+        Validity
+            Not Before: Oct  9 11:58:26 2012 GMT
+            Not After : Oct  9 11:58:26 2013 GMT
+        Subject: CN=SEB_UT
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (1024 bit)
+                Modulus:
+                    00:f8:7f:dd:b4:34:3c:71:35:90:bb:fe:57:55:7b:
+                    4a:e8:15:c4:bd:86:b0:5f:30:a3:17:86:35:e4:13:
+                    94:0a:28:23:7d:b2:0e:3b:95:40:2d:03:a9:89:44:
+                    3f:37:ed:79:de:ce:8b:90:7f:8d:d3:2f:e8:5e:ff:
+                    42:a0:bb:db:44:f7:a5:ba:74:0a:b0:f1:35:f9:ed:
+                    e4:04:94:9c:e1:3c:a5:1a:89:62:ed:40:e2:75:ab:
+                    e4:57:92:77:4b:d0:7e:d2:dc:c1:fd:ff:78:b5:04:
+                    0e:57:1d:57:48:2e:da:05:ec:14:2e:77:cf:39:ad:
+                    ff:f1:cf:85:aa:bd:ca:84:81
+                Exponent: 59291 (0xe79b)
+    Signature Algorithm: sha1WithRSAEncryption
+         cb:ea:fa:73:a2:28:45:f9:d9:c1:0c:8c:49:2c:0b:af:01:02:
+         63:72:e8:8c:24:0e:f4:3b:1d:fd:c9:65:d7:e7:a3:17:10:ec:
+         5a:88:fb:08:c5:e3:d9:75:a4:14:b4:78:5c:1a:a1:82:89:16:
+         2f:8d:74:ff:8d:c7:73:7d:23:48:b4:dc:d9:b2:b0:ef:03:36:
+         38:46:5c:15:bd:72:e0:19:7e:4d:50:ee:c3:63:28:f5:7e:87:
+         e8:11:19:55:77:99:d4:22:73:e0:71:68:5e:e2:f0:0b:5c:ef:
+         e0:5b:d2:ba:3e:65:47:9a:a4:5a:d1:a3:20:bf:61:26:dd:46:
+         ee:6b
+-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQD4f920NDxxNZC7/ldVe0roFcS9
+hrBfMKMXhjXkE5QKKCN9sg47lUAtA6mJRD837XnezouQf43TL+he/0Kgu9tE96W6
+dAqw8TX57eQElJzhPKUaiWLtQOJ1q+RXkndL0H7S3MH9/3i1BA5XHVdILtoF7BQu
+d885rf/xz4WqvcqEgQIDAOeb
+-----END PUBLIC KEY-----
+-----BEGIN CERTIFICATE-----
+MIIBkDCB+gIBAjANBgkqhkiG9w0BAQUFADARMQ8wDQYDVQQDEwZTRUJfVVQwHhcN
+MTIxMDA5MTE1ODI2WhcNMTMxMDA5MTE1ODI2WjARMQ8wDQYDVQQDEwZTRUJfVVQw
+gZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAPh/3bQ0PHE1kLv+V1V7SugVxL2G
+sF8woxeGNeQTlAooI32yDjuVQC0DqYlEPzfted7Oi5B/jdMv6F7/QqC720T3pbp0
+CrDxNfnt5ASUnOE8pRqJYu1A4nWr5FeSd0vQftLcwf3/eLUEDlcdV0gu2gXsFC53
+zzmt//HPhaq9yoSBAgMA55swDQYJKoZIhvcNAQEFBQADgYEAy+r6c6IoRfnZwQyM
+SSwLrwECY3LojCQO9Dsd/cll1+ejFxDsWoj7CMXj2XWkFLR4XBqhgokWL410/43H
+c30jSLTc2bKw7wM2OEZcFb1y4Bl+TVDuw2Mo9X6H6BEZVXeZ1CJz4HFoXuLwC1zv
+4FvSuj5lR5qkWtGjIL9hJt1G7ms=
+-----END CERTIFICATE-----

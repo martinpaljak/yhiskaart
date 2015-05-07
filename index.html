@@ -1,0 +1,373 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<title>Ühiskaardi ühisinfo</title>
+</head>
+<body>
+<h1>Tallinna ühiskaardi miniuuring.</h1>
+<hr/>
+<b>NB! Käesolev kirjutis kajastab minu isiklikke seisukohti, täidab hariduslikke eesmärke, on koostatud avalike andmete põhjal, ei pruugi olla tõene ega korrektne, avaldatud AS-IS põhimõttel ja ei kutsu kedagi üles pättusi tegema!</b>
+<hr/>
+Hüppa: <a href="#valedaator">Valedaator</a>&nbsp;|&nbsp;<a href="#validaator">validaator.py</a>&nbsp;|&nbsp;<a href="#pilet">pilet.py</a>&nbsp;|&nbsp;<a href="#abi">Kloonimise takistamine</a>
+
+<h2>Taust</h2>
+
+<p>Tallinnas tuleb trammiga sõitmiseks lehvitada oranži seadme juures "piiksukaarti". Ekslikult võib see jätta mulje, et sõiduõigust tõendav pilet on kuidagi füüsiliselt poogitud antud rohelise kaardi peale: nagu ka ID-kaardil põhineva pileti puhul on taas tegemist "andmebaasiriigi" lahendusega, kus tegelik sõiduõigus on kirjas kusagil keskses andmebaasis ja roheline kaart ainult on <a href="https://et.wikipedia.org/wiki/Viit_(informaatika)">viit</a> sinna andmebaasi. Erinevalt isikukoodil põhinevast viidast (ehk siis ID-piletist) lisab taoline füüsiline lahendus andmebaasi veel rohkem infot: isikustatud kaardi kasutamisel on teada <a href="http://www.tallinnapostimees.ee/1079666/andmekaitse-voib-tallinnal-isikustatud-uhiskaartide-kasutamise-keelata/">kes, kuna ja kus bussiga sõidab</a>. Et raha ega sõiduõigust ei talletata kaardile "füüsiliselt" saab kinnitust isikustamata kaardile rkioskis raha laadides: müüja võtab raha vastu, loeb triipkoodi lugejaga kaardilt selle seerianumbri ja raha jõuabki "kontole". "Piiks-piiks ja raha tuleb" siin ei kehti.</p>
+
+<img src="piletikontroll.jpg"/>
+
+
+<h2>Sõiduõiguse kontroll</h2>
+<p>ID-pileti puhul oli see lihtne: kontrolör seadis isiku vastavusse isikukoodiga enda seadmega (<a href="http://i.imgur.com/VCMAl.gif">kontrollis dokumendil oleva näo vastavust isiku näoga</a>), mis omakorda kontrollis üle interneti kesksest andmebaasist, kas antud isikukoodiga tegelasel oli antud hetkel kehtiv tunnipilet või kuupilet vmt. Sõiduõiguse tõendamiseks tulnuks võltsida ID-kaarti (või mõnd muud isikut tõendavat dokumenti). Piiksukaardi puhul peab kontrolör kõigepealt kontrollima, kas antud kaart on bussi sisenedes validaatoris edukalt registreeritud (kaardil oli piisavalt ettemaksu või kuulus kaart tasuta sõidu õigust omavale isikule) ja isikustatud ning tasuta sõitva inimese puhul sarnaselt ID-piletiga viima vastavusse inimese nime ja näo.</p>
+<p>Oluline erinevus ID-piletiga on isikustamata kaart, kus peal ainult sularaha ja mille puhul piisab sõiduõiguse tõestamiseks ainult registreeritud ühiskaardist. Olles tartlane, keskendub see miniuuring justnimelt sellisele olukorrale.</p>
+
+
+<h2>Süsteemi lollitamine</h2>
+<p>
+Kuidas lollitda süsteemi nii, et õnnetu tartlane saaks Tallinnas samuti tasuta trammiga sõita (Tartus ju <a href="http://tartu.postimees.ee/260608/tartu_postimees/uudised/338286.php">trammi ei ole</a>) ? Püstitan ühe hüpoteesi süsteemi koostisosadest ja fokuseerin miniuuringu ainsale objektile, mida saan ise vaadelda: kaardile endale.
+</p>
+
+<h2>Süsteemi komponendid</h2>
+<p>
+<ul>
+	<li>Jänes</li>
+	<li>Ühiskaart (ehk viit piletile)</li>
+	<li>Validaator</li>
+	<li>Kontrolör (koos seadmega)</li>
+	<li>Pilet ise ehk rida andmebaasis ehk pilet.ee</li>
+</ul>
+
+<i>Eeldades</i>, et pileteid ja raha talletav andmebaas ehk pilet.ee süsteem ise on piisavalt turvaline (<a href="http://www.ekspress.ee/news/paevauudised/eestiuudised/pealinna-piletisusteemis-laiutas-turvaauk.d?id=65511028">pole kindel</a>), et sinna lisakirjeid tekitada ei saa, on jänese ainus võimalus luua võltsitud viit (<b>kellegi teise</b>) raha sisaldavale pilet.ee kirjele. Oletame, et pilet.ee süsteem sisaldab endas tabelit, kus kirjas väljastatud kaartide identifikaator (number) ja kaardiga seotud rahasumma. Edukaks jänese sõitmiseks peab jänes seega
+<ol>
+	<li>teadma raha sisaldava andmebaasikirje kaardi identifikaatorit</li>
+	<li>suutma petta validaatorit, et omab kehtivat viidet (kaarti) sellele kirjele</li>
+	<li>suutma petta kontrolöri (tehniliselt sarnane validaatorile), et omab kehtivat viidet rahaga kirjele</li>
+</ol>
+
+Piltlikult öeldes tahab jänes teha pangakaardi, mis oleks seotud maksuameti pangakontoga, ja sellega poes maksta.
+</p>
+
+
+
+
+<h2>Tehniline sissejuhatus</h2>
+<p>Ühiskaart on RFID tehnoloogial põhinev, väidetavalt <a href="https://en.wikipedia.org/wiki/MIFARE#MIFARE_Plus">Mifare Plus</a> (<a href="http://www.mifare.net/products/mifare-smartcard-ic-s/mifare-plus/">tootja lehekülg</a>, <a href="http://www.mnt.ee/public/Tiit_Laiksoo_08.11.2012.pdf">allikas</a>) kaart. Samas <a href="https://play.google.com/store/apps/details?id=com.nxp.taginfolite">NXP Tag Info rakendus</a> peab piiksukaarti <a href="https://en.wikipedia.org/wiki/MIFARE#MIFARE_Classic">Mifare Classic</a> kaardiks (Mifare Plus Security režiimis 1 käitubki nagu Mifare Classic, tagasiühilduvuse eesmärkidel). Sisuliselt on Mifare Classic võrreldavad mälupulgaga, mis jagatuks sektoriteks ja sektorid omakorda blokkideks. Iga sektoriga on võimalik siduda kaks võtit, A ja B, millega autentides on võimalik sektoris olevaid andmeid kas lugeda või kirjutada.
+<br/>
+Kaardi tagumisele küljele on kantud 11-kohaline kaardi number koos triipkoodiga (tõenäoliselt sama number).
+</p>
+
+<h2>"Võõrad kaardid"</h2>
+<p>Erinevalt näiteks Londoni Oyster kaardi või Helsinki süsteemist on võimalik Tallinnas kasutada lisaks ühiskaardile ka <a href="https://www.pilet.ee/viipe/uhiskaart/persod/myisiccard">RFID kiibiga varustatud ISIC kaarte</a> (tulevikus võibolla veelgi rohkem, <a href="http://www.takk.ee/files/2011-02-10%20ID-Ticket%20&%20Interoperability.pdf">allikas</a>), mida <b>ei väljasta Tallinna Transpordiamet</b>. Järgnevas hüpoteesis on sellel faktil oluline roll.</p>
+
+
+<h2>Mis on kaardil?</h2>
+<p><a href="ebf2ce70.txt">See</a>.</p>
+
+<h2>Ma küsin uuesti, MIS ON KAARDIL!?</h2>
+<p>Seletus inimkeeli.
+<ul>
+	<li>Loetud on ühiskaarti numbriga 90002664005</li>
+	<li>Selle kaardi <a href="http://www.mifare.net/technology/4-7byte-uid/">UID</a> on <b>EB:F2:CE:70</b> (4 baiti, 32 bitti)</li>
+	<li>Kaardil on 16 sektorist kasutusel 7.</li>
+	<li><a href="http://www.nxp.com/documents/application_note/AN1305.pdf
+">Mifare Classic on formateeritud kui NDEF tag</a></li>
+	<li>Kaardile on kantud <a href="http://learn.adafruit.com/adafruit-pn532-rfid-nfc/ndef
+">NDEF (NFC Data Exchange Format)</a> tag kahe kirjega</li>
+	<li>Kaardile kantud andmed on read-only olekus, kusjuures lugemiseks kasutatakse <b>standardseid võtmeid</b> MAD: a0a1a2a3a4a5 ja NDEF: d3f7d3f7d3f7. <b>Kaart on loetav kõigile.</b></li>
+	<li><a href="ebf2ce70-xml.txt">Teine vaade kaardi sisule</a></li>
+</ul>
+</p>
+<p>
+Madala taseme detailid kõrvale jättes on oluliseks infoks NDEF sõnum. Sõnum koosneb kahest kirjest:
+<ol>
+	<li>urn:nfc:ext:pilet.ee:ekaart:2 väärtusega (hex) 66195f26063132303832325904202020205f28033233335f2701316e1b5a13<b style="color:red;">33303836343930303930303032363634303035</b>5304<b style="color:red;">ebf2ce70</b></li>
+	<li>RSASSA-PKCS1-v1_5-SHA1 signatuur (128 baiti) ja viide X509 sertifikaadile aadressil http://pilet.ee/crt/30864900-0001.crt</li>
+</ol>
+Tähelepanekuid:
+<ul>
+	<li>Esimeses kirjes on ASCII kujul kaardi number (pikem kui kaardile trükitud) ja kaardi UID</li>
+	<li>128-baidine signatuur viitab 1024 bitisele RSA võtmele</li>
+	<li>Kaardi number on tegelikult <a href="https://en.wikipedia.org/wiki/Primary_Account_Number">PAN</a> ja selle viimane number tegelikult <a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Luhn-i kontrollkood</a>. Antud kaardi PAN on 3086490090002664005. </li>
+</ul>
+
+</p>
+
+<h2>"Sertifikaadid"</h2>
+<p>Viidatud sertifikaadiga peaks saama seda signatuuri kontrollida. Proovime.
+	<pre>
+$ wget --no-check-certificate  http://pilet.ee/crt/30864900-0001.crt
+--2013-01-10 01:57:13--  http://pilet.ee/crt/30864900-0001.crt
+Resolving pilet.ee (pilet.ee)... 90.191.225.130
+Connecting to pilet.ee (pilet.ee)|90.191.225.130|:80... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: http://www.pilet.ee//crt/30864900-0001.crt [following]
+--2013-01-10 01:57:15--  http://www.pilet.ee//crt/30864900-0001.crt
+Resolving www.pilet.ee (www.pilet.ee)... 90.191.225.130
+Connecting to www.pilet.ee (www.pilet.ee)|90.191.225.130|:80... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://www.pilet.ee/crt/30864900-0001.crt [following]
+--2013-01-10 01:57:16--  https://www.pilet.ee/crt/30864900-0001.crt
+Connecting to www.pilet.ee (www.pilet.ee)|90.191.225.130|:443... connected.
+WARNING: The certificate of ‘www.pilet.ee’ is not trusted.
+WARNING: The certificate of ‘www.pilet.ee’ hasn't got a known issuer.
+HTTP request sent, awaiting response... 200 OK
+Length: 851 [application/x-x509-ca-cert]
+Saving to: ‘30864900-0001.crt’
+	</pre>
+Tähelepanekud
+<ul>
+	<li>Kõigepealt suunatakse kahe kaldriipsuga aadressile?? Tõenäoliselt Apache konfigureerimise viga.</li>
+	<li>Peale seda suunatakse https:// lehele. OK.</li>
+</ul>
+Antud kataloogis on tegelikult veel kaks faili:
+</p>
+
+<img src="index_of_crt.png"/>
+
+
+<p>
+Etteruttavalt mainin, et teised kaks faili peaksid olema SEB ja Ülikoolide väljastatavate kaartide sertifikaadid. "Peaksid", sest veebis avaldatud kujul pole nad kasutatavad valede reavahetuste tõttu (LF või CR/LF asemel on kasutusel ainult CR). Parandatud ja paemaks lugemiseks tekstikujule viidud failid on vaadeldavad siit:
+
+<ul>
+	<li><a href="live_30864900-0001.txt">live_30864900-0001.txt</a></li>
+	<li><a href="isic_ut_fixed_92337316-0001.txt">isic_ut_fixed_92337316-0001.txt</a></li>
+	<li><a href="seb_ut_fixed_92337331-0001.txt">seb_ut_fixed_92337331-0001.txt</a></li>
+</ul>
+Tähelepanekuid sertifikaatide vaatlusest:
+<ul>
+	<li>Kõik sertifikaadid on self-signed, 1024 bitised RSA võtmed, mis <a href="http://facthacks.cr.yp.to/">pole</a> <a href="https://blogs.technet.com/b/pki/archive/2012/06/12/rsa-keys-under-1024-bits-are-blocked.aspx?Redirected=true">enam</a> turvalised.</li>
+	<li>Aktiivse kaardi pealt viidatud sertifikaadi omanikuks on märgitud "OU=transport-test". Test-süsteemiga on mindud toodangusse?</li>
+	<ul><li>Vist siiski mitte, vaata alt.</li></ul>
+	<li>ISIC_UT ja SEB_UT kasutavad imelikke RSA eksponente, vastavalt 45509 ja 59291.</li>
+	<ul><li>Viide ID-kaardile, kus on ajalooliselt samuti random eksponendid?</li></ul>
+	<li>Kõik sertifikaadid on versiooniga 1 (kaasaegne on versioon 3)</li>
+	<ul><li>Sertifikaate kasutatakse tõenäoliselt ainult avalike võtmete talletamiseks, seega ei mängi ei versioonid, subjektid ega kuupäevad rolli.</li></ul>
+</ul>
+</p>
+<h2>Allkirja kontroll</h2>
+<p>Proovime kontrollida kaardil olevat allkirja:
+<pre>
+$ openssl rsautl -in <a href="ebf2ce70-signature.bin">ebf2ce70-signature.bin</a> -verify -hexdump -certin -inkey <a href="live_30864900-0001.txt">live_30864900-0001.txt</a>
+RSA operation error
+140735202339260:error:0407006A:rsa routines:RSA_padding_check_PKCS1_type_1:block type is not 01:rsa_pk1.c:100:
+140735202339260:error:04067072:rsa routines:RSA_EAY_PUBLIC_DECRYPT:padding check failed:rsa_eay.c:721:
+</pre>
+
+See ei õnnestu. Järelikult on kas väljastatud kaardid või nendel viidatud veebis olev sertifikaat vale.
+</p>
+<h2>Veel pileteid</h2>
+<p>
+Head inimesed annetasid veel pileteid katsetamiseks:
+<ul>
+	<li><a href="tag-7602dbda.xml">tag-7602dbda.xml</a> (SEB ISIC)</li>
+	<li><a href="tag-ebf2ce70.xml">tag-ebf2ce70.xml</a> (kaart 90002664005)</li>
+	<li><a href="tag-9bfcce70.xml">tag-9bfcce70.xml</a> (kaart 90002664013)</li>
+	<li><a href="tag-db0608a4.xml">tag-db0608a4.xml</a> (kaart 90001066350</li>
+</ul>
+</p>
+
+
+<h2>Valideeruv allkiri</h2>
+<p>
+SEB ISIC kaardiga aga allkirja kontroll töötab:
+<pre>
+$ openssl rsautl -in <a href="7602dbda-signature.bin">7602dbda-signature.bin</a> -verify -hexdump -certin -inkey <a href="seb_ut_fixed_92337331-0001.txt">seb_ut_fixed_92337331-0001.txt</a>
+0000 - 30 21 30 09 06 05 2b 0e-03 02 1a 05 00 04 14 8b   0!0...+.........
+0010 - ba 33 2d e4 fb e6 35 10-cc 01 1a 03 82 69 73 1b   .3-...5......is.
+0020 - 5e a6 40                             
+</pre>
+Ehk siis kaardi 7602dbda puhul on allkirjastatud midagi, mille SHA1 räsi on ba8b2d33fbe435e6cc101a01820373695e1b40a6. TODO: <a href="http://www.wima.mc/dan/2011/CONF_PDF/TUESDAY/AM/ROLAND.pdf">record 1 loovalt läbi hashida</a>.  <a href="docs/NFCForum-TS-Signature_RTD-1.0.pdf">NDEF Sig spekk.</a>
+
+
+</p>
+
+<h2>HÜPOTEES</h2>
+<p>Mifare võtmehaldus (sümmetrilised võtmed) oleks äärmiselt keeruline/võimatu kui tahta kasutada suvalist süsteemivälist kaarti (näiteks pangakaarti või üliõpilaspiletit). Seega tehniliselt kehtiv pilet on kaardile kantud andmefail, mis sisaldab kaardi väljastaja signatuuri kaardiandmete kohta (kaardi PAN, UID ja midagi veel). Kopeerides ühelt kaardilt teisele NDEF andmekogu ja muutes kaardi UID-i, tekib ka töötav kloon kaardist.</p>
+
+<h2>Kuidas leida rahakat pileti numbrit?</h2>
+<p><blockquote>"Oma kaardi jääki näete valideerimisel ja raha mahaarvamist saate kontrollida internetis pilet.ee kaudu. Kui kaardi jääk on suurem kui 50 eurot, siis validaator jääki turvalisuse kaalutlusel ei näita ja seda saab vaadata jällegi pilet.ee keskkonnast." (<a href="http://arvamus.postimees.ee/1091262/taavi-aas-online-intervjuus-id-kaardi-pilet-jai-ajale-jalgu/">allikas</a>)</blockquote>. Kuna ühiskaardi numbrite prefiks on teada ja kehtivaid numbreid annab lihtsasti genereerida (<a href="valid_tickets.txt">siin on
+300000 kehtivat pileti numbrit</a> mille on teinud <a href="#pilet">./py/pilet.py totalisaator</a>), ning pilet.ee veebilehelt saab kontrollida kaardil oleva raha hulka , on "huvitavate kaartide" nimekirja koostamine väga lihtne. Näiteks minu kaardil on https://www.pilet.ee/viipe/uhiskaart/activetickets?active_tickets_filter_set&amp;ticket_sale_detail_start=0&amp;active_tickets_filter[card_id]=90002664005 (kopeeri aadress, NB! GET päring töötab hästi)</p>
+
+<h2>Kuidas leida kloonitavat kaarti?</h2>
+<p>Tallinas olles oli tuuline, sajune ja jahe ilm. Lühikesel trammisõidul oli vähemalt kaks noort inimest, kes kandsid enda ühiskaarti seljakoti/käekoti välises taskus ja viibutasid validaatori ees kindaid käest võtmata kotti. Kuigi antud juhul oli väga suure tõenäosusega tegemist tasuta sõitjaga, saab kannatlik kaasreisija märkamatult skannerida kaasreisijate taskutes ja kottides olevaid RFID pileteid ja neist kloone teha.
+<a href="http://hackaday.com/2012/05/27/reading-rfid-cards-from-afar-easily/">"Sniffing cards from a feet away"</a>
+</p>
+
+
+<h2>Kuidas luua kaart ilma "füüsiliselt kloonimata"?</h2>
+<p>1024 bitine RSA on praeguseks enda aja ära elanud. Erinevad ründed ja arengud matemaatikas on halva randomi puhul teinud võimalikuks võtmete ära arvamise (see eeldaks muidugi, et veebis oleks kättesaadav reaalselt kasutatav avalik võti!). Juhul kui pilet.ee süsteem <b>ei salvesta</b> kaardi UID-i andmebaasis ja seda kasutatakse ainult validaatoris allkirja kontrollimisel, on võimalik ise luua ühiskaartide koopiaid "kodust lahkumata".</p>
+
+
+<h2>Kuidas petta ära kontrolör?</h2>
+<p>Valge PVC kaardi üle värvimine rohelisega peaks kõigile jõukohane olema.</p>
+
+<h2><a name="validaator"/>validaator.py</h2>
+<h3>SEB ISIC</h3>
+<pre>
+$ ./py/validaator.py tag-7602dbda.xml 
+Yhiskaardi NFC TagInfo faili analysaator. info: martin@martinpaljak.net
+Viipekaardi tootja: SEB
+Viipkeaardi sisu:   
+
+Pileti  NR:         80140082548
+Pileti PAN: 9233733180140082548
+Mifare   UID: 7602dbda
+pilet.ee UID: 7602dbda
+UID klapib.
+SHA1 allkirjas: 8bba332de4fbe63510cc011a038269731b5ea640
+Allkirjastaja: http://pilet.ee/crt/92337331-0001.crt
+Kontrollitud allkirja räsi: 8bba332de4fbe63510cc011a038269731b5ea640
+</pre>
+<h3>Minu isiklik ühiskaart. 13.9 € saadaval!</h3>
+<pre>
+$ ./py/validaator.py tag-ebf2ce70.xml 
+Yhiskaardi NFC TagInfo faili analysaator. info: martin@martinpaljak.net
+Viipekaardi tootja: Yhiskaart
+Viipkeaardi sisu:   13.9 EUR
+
+Pileti  NR:         90002664005
+Pileti PAN: 3086490090002664005
+Mifare   UID: ebf2ce70
+pilet.ee UID: ebf2ce70
+UID klapib.
+SHA1 allkirjas: efb16b00738d6b679382f6b1968b2091a602f96b
+Allkirjastaja: http://pilet.ee/crt/30864900-0001.crt
+Allkiri EI VERIFITSEERU!	
+</pre>
+<h3>Kellegi Tallinna elaniku ühiskaart</h3>
+<pre>
+$ ./py/validaator.py tag-cbcf08a4.xml 
+Yhiskaardi NFC TagInfo faili analysaator. info: martin@martinpaljak.net
+Viipekaardi tootja: Yhiskaart
+Viipkeaardi sisu:   0.0 EUR (Tallinlase tasuta sõiduõigus)
+
+Pileti  NR:         90001101611
+Pileti PAN: 3086490090001101611
+Mifare   UID: cbcf08a4
+pilet.ee UID: cbcf08a4
+UID klapib.
+SHA1 allkirjas: d063e7bbc5651884c9c93348fea3f5ab20eb676b
+Allkirjastaja: http://pilet.ee/crt/30864900-0001.crt
+Allkiri EI VERIFITSEERU!
+</pre>
+
+<h3>"Halb kloon" (UID ei klapi)</h3>
+<pre>
+$ ./py/validaator.py tag-ea2aae02.xml 
+Ühiskaardi NFC TagInfo faili analysaator. info: martin@martinpaljak.net
+Viipekaardi tootja: Yhiskaart
+Viipkeaardi sisu:   13.9 EUR
+
+Pileti  NR:         90002664005
+Pileti PAN: 3086490090002664005
+Mifare   UID: ea2aae02
+pilet.ee UID: ebf2ce70
+UID EI KLAPI!
+SHA1 allkirjas: efb16b00738d6b679382f6b1968b2091a602f96b
+Allkirjastaja: http://pilet.ee/crt/30864900-0001.crt
+Allkiri EI VERIFITSEERU!
+</pre>
+<h3>Hea kloon (saab trammiga sõita)</h3>
+<p>Vaata eelmist ;)</p>
+<h2>pilet.py</h2>
+<pre>
+$ ./py/pilet.py
+pilet.py [totalisaator|terminaator|karburaator|bingo|&lt;kaardi PAN&gt;...|&lt;kaardi nr&gt;...]
+</pre>
+<h3>...</h3>
+<pre>
+$ ./py/pilet.py totalisaator
+90000000004
+90000000012
+90000000020
+90000000038
+90000000046
+90000000053
+# ... cut ...
+90002999948
+90002999955
+90002999963
+90002999971
+90002999989
+90002999997
+</pre>
+<h3>Suvaliselt valitud kaardid</h3>
+<pre>
+90002999955 7.8 EUR
+90000265565 1.5 EUR Tallinlase tasuta sõiduõigus
+90000080378 0.0 EUR Pensionäri tasuta sõiduõigus
+90000222657 0.0 EUR Tallinn-Harjumaa 1.-4. tsooni kuukaart
+90000279889 21.39 EUR
+90000286546 0.0999999999999999 EUR Tallinlase tasuta sõiduõigus
+90000001770 0.0999999999999999 EUR Tallinlase tasuta sõiduõigus
+90002500100 0.0999999999999999 EUR 
+90000207864 1.2 EUR Nelja tsooni ühiskaart
+90000235899 20.0 EUR 
+90000007710 20.0 EUR 
+90001965379 -1.1 EUR 
+90000200919 -4.4 EUR 
+....
+90004501734
+
+</pre>
+
+<h2>Abivahend</h2>
+<a name="abi"/>
+<p>Rahakotti fooliumit või siis <a href="http://www.smartcardfocus.com/shop/ilp/id~236/RFID_Blocking_Card_Sleeve/p/index.shtml">selline ümbrik (vastupidavam kui tavaline hõbepaber)</a></p>
+
+<h2>TO BE CONTINUED</h2>
+<p>Karavan läheb edasi</p>
+
+Lingid:
+<ul>
+	<li><a href="http://learn.adafruit.com/adafruit-pn532-rfid-nfc/ndef">http://learn.adafruit.com/adafruit-pn532-rfid-nfc/ndef</a></li>
+	<li><a href="http://learn.adafruit.com/adafruit-pn532-rfid-nfc/mifare">http://learn.adafruit.com/adafruit-pn532-rfid-nfc/mifare</a></li>
+	<li><a href="http://www.nxp.com/documents/application_note/AN1305.pdf">http://www.nxp.com/documents/application_note/AN1305.pdf</a></li>
+	<li><a href="http://www.takk.ee/files/2011-02-10%20ID-Ticket%20&amp;%20Interoperability.pdf">http://www.takk.ee/files/2011-02-10%20ID-Ticket%20&amp;%20Interoperability.pdf</a></li>
+	<li><a href="http://www.riso.ee/et/files/kool_rfid_analyys.pdf">http://www.riso.ee/et/files/kool_rfid_analyys.pdf</a></li>
+	<li><a href="http://www.nxp.com/documents/data_sheet/MF1S503x.pdf">http://www.nxp.com/documents/data_sheet/MF1S503x.pdf</a></li>
+	<li><a href="http://www.nxp.com/documents/data_sheet/MF1S70YYX.pdf">http://www.nxp.com/documents/data_sheet/MF1S70YYX.pdf</a></li>
+	<li><a href="http://www.nxp.com/documents/application_note/AN10787.pdf">http://www.nxp.com/documents/application_note/AN10787.pdf</a></li>
+	<li><a href="http://www.mulliner.org/nfc/">http://www.mulliner.org/nfc/</a></li>
+	<li><a href="https://code.launchpad.net/~stephen-tiedemann/nfcpy/dev-phdc">https://code.launchpad.net/~stephen-tiedemann/nfcpy/dev-phdc</a></li>
+	<li><a href="http://codebutler.com/announcing-farebot-for-android/">http://codebutler.com/announcing-farebot-for-android/</a></li>
+	<li><a href="http://www.skyrfid.com/RFID_Tag_Read_Ranges.php">http://www.skyrfid.com/RFID_Tag_Read_Ranges.php</a></li>
+	<li><a href="http://www.mnt.ee/failid/YTRIS_lahteanalyysi_kokkuvote.pdf">http://www.mnt.ee/failid/YTRIS_lahteanalyysi_kokkuvote.pdf</a></li>
+	<li><a href="http://www.kaardiekspert.ee/uudised/45-tallinna-uhistranspordi-viipekaardid">http://www.kaardiekspert.ee/uudised/45-tallinna-uhistranspordi-viipekaardid</a></li>
+	<li><a href="http://jcp.org/en/jsr/detail?id=257">http://jcp.org/en/jsr/detail?id=257</a></li>
+	<li><a href="http://wiki.aspire.ow2.org/xwiki/bin/view/Main/WebHome">http://wiki.aspire.ow2.org/xwiki/bin/view/Main/WebHome</a></li>
+</ul>
+<hr/>
+<h2>Androidi Valedaator</h2>
+<a name="valedaator"/>
+
+<p>
+	<a href="https://play.google.com/store/apps/details?id=net.kyberpunk.valedaator">Google Play</a>
+	<ul>
+		<li>Loeb kaardi</li>
+		<li>Pärib pilet.ee-st raha seisu ja aktiivse pileti olemasolu.</li>
+		<li>Näitab raha numbrit rohelisel (raha kaardil olemas) või punasel (raha kaardil pole) taustal.</li>
+		<li>Salvestab NDEF sõnumi maha.</li>
+		<li><del>Võimaldab NDEF sõnumit HiinaKaardile maha kirjutada</del> (tehniliselt võimatu :(
+		)</li>
+		<li><a href="https://github.com/OpenKMS/validaator">Githubi repo</a></li>
+	</ul>
+</p>
+<p>
+<img src="valedaator1.png"/>
+<img src="valedaator2.png"/>
+<img src="valedaator3.png"/>
+<img src="valedaator4.png"/>
+<img src="valedaator5.png"/>
+</p>
+
+<ul>
+	<li>https://code.google.com/p/ndef-tools-for-android/</li>
+	<li>http://stackoverflow.com/questions/15020940/unlock-mifare-tag-with-android</li>
+	<li>https://code.google.com/p/java-android-beam-api/</li>
+</ul>
+
+<hr/>
+Martin Paljak <a href="mailto:martin ätt martinpaljak punk net">martin ätt martinpaljak punk net</a>
+</body>
+</html>

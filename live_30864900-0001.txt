@@ -1,0 +1,54 @@
+Certificate:
+    Data:
+        Version: 1 (0x0)
+        Serial Number: 14778580187889299288 (0xcd1810616fc46f58)
+    Signature Algorithm: sha1WithRSAEncryption
+        Issuer: C=EE, ST=Harjumaa, L=Tallinn, O=United Tickets LTD, OU=transport-live
+        Validity
+            Not Before: Jan 23 23:35:38 2013 GMT
+            Not After : Jan 21 23:35:38 2023 GMT
+        Subject: C=EE, ST=Harjumaa, L=Tallinn, O=United Tickets LTD, OU=transport-live
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (1024 bit)
+                Modulus:
+                    00:bc:3d:33:4e:78:b7:00:ab:f0:c8:2c:4e:59:ad:
+                    03:2c:2e:53:d9:7f:a8:0a:88:cf:16:76:6d:1a:55:
+                    86:f9:d3:ca:86:f6:27:dc:6e:76:2c:8a:18:54:55:
+                    6f:fa:b2:c7:37:e4:57:ef:16:11:60:77:32:ab:58:
+                    81:96:5a:d0:76:e7:e5:db:bd:a4:c7:6f:f7:45:92:
+                    74:53:d8:07:d9:6b:7c:22:b5:cd:3b:55:6d:25:b7:
+                    ba:13:ac:49:be:a7:5f:67:8b:47:a7:d6:f9:ef:e5:
+                    37:07:9a:78:d2:dc:9a:36:70:9f:4a:b9:a8:24:46:
+                    91:73:58:01:7f:97:b2:a0:1d
+                Exponent: 65537 (0x10001)
+    Signature Algorithm: sha1WithRSAEncryption
+         16:59:60:eb:95:c6:f9:5e:5d:88:71:3a:ec:7c:a6:71:d5:58:
+         9a:cf:73:6d:32:25:35:2d:e7:6d:82:98:5b:92:43:3b:9c:e6:
+         f5:16:48:99:57:81:88:01:4b:bd:c4:52:60:df:cb:5e:9b:f8:
+         f7:91:48:6b:ca:55:c7:3f:fe:44:38:c9:58:0d:e2:86:13:e7:
+         cd:52:56:89:04:21:f2:d9:cd:69:07:7a:a9:36:10:59:79:b0:
+         37:b3:70:af:5e:0e:6e:0e:3f:92:09:80:d6:9e:96:20:13:72:
+         6d:a5:79:87:87:d2:5e:b5:bc:d5:53:2d:fe:66:f2:fc:6d:bb:
+         16:89
+-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8PTNOeLcAq/DILE5ZrQMsLlPZ
+f6gKiM8Wdm0aVYb508qG9ifcbnYsihhUVW/6ssc35FfvFhFgdzKrWIGWWtB25+Xb
+vaTHb/dFknRT2AfZa3witc07VW0lt7oTrEm+p19ni0en1vnv5TcHmnjS3Jo2cJ9K
+uagkRpFzWAF/l7KgHQIDAQAB
+-----END PUBLIC KEY-----
+-----BEGIN CERTIFICATE-----
+MIICRzCCAbACCQDNGBBhb8RvWDANBgkqhkiG9w0BAQUFADBoMQswCQYDVQQGEwJF
+RTERMA8GA1UECAwISGFyanVtYWExEDAOBgNVBAcMB1RhbGxpbm4xGzAZBgNVBAoM
+ElVuaXRlZCBUaWNrZXRzIExURDEXMBUGA1UECwwOdHJhbnNwb3J0LWxpdmUwHhcN
+MTMwMTIzMjMzNTM4WhcNMjMwMTIxMjMzNTM4WjBoMQswCQYDVQQGEwJFRTERMA8G
+A1UECAwISGFyanVtYWExEDAOBgNVBAcMB1RhbGxpbm4xGzAZBgNVBAoMElVuaXRl
+ZCBUaWNrZXRzIExURDEXMBUGA1UECwwOdHJhbnNwb3J0LWxpdmUwgZ8wDQYJKoZI
+hvcNAQEBBQADgY0AMIGJAoGBALw9M054twCr8MgsTlmtAywuU9l/qAqIzxZ2bRpV
+hvnTyob2J9xudiyKGFRVb/qyxzfkV+8WEWB3MqtYgZZa0Hbn5du9pMdv90WSdFPY
+B9lrfCK1zTtVbSW3uhOsSb6nX2eLR6fW+e/lNweaeNLcmjZwn0q5qCRGkXNYAX+X
+sqAdAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAFllg65XG+V5diHE67HymcdVYms9z
+bTIlNS3nbYKYW5JDO5zm9RZImVeBiAFLvcRSYN/LXpv495FIa8pVxz/+RDjJWA3i
+hhPnzVJWiQQh8tnNaQd6qTYQWXmwN7Nwr14Obg4/kgmA1p6WIBNybaV5h4fSXrW8
+1VMt/mby/G27Fok=
+-----END CERTIFICATE-----

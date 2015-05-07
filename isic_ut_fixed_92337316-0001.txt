@@ -1,0 +1,50 @@
+Certificate:
+    Data:
+        Version: 1 (0x0)
+        Serial Number: 1 (0x1)
+    Signature Algorithm: sha1WithRSAEncryption
+        Issuer: CN=ISIC_UT
+        Validity
+            Not Before: Oct  9 11:58:13 2012 GMT
+            Not After : Oct  9 11:58:13 2013 GMT
+        Subject: CN=ISIC_UT
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (1024 bit)
+                Modulus:
+                    00:a2:56:5c:d9:b5:9c:3a:55:4a:0a:b2:93:3c:28:
+                    df:51:91:0f:20:ba:68:8a:06:6d:73:61:c3:91:e3:
+                    75:cf:fb:b9:5d:ae:f9:19:de:e0:d3:69:fd:28:8a:
+                    8a:e4:e6:b4:8c:90:55:39:fe:27:ee:44:dd:38:a4:
+                    db:c4:3d:b7:1a:16:72:b0:7e:94:a8:d2:96:91:40:
+                    28:69:35:04:26:62:a1:9e:bb:37:d2:d0:59:70:0a:
+                    a7:24:a6:e1:8e:b9:d2:5d:25:a8:8d:6f:6c:ca:84:
+                    43:79:57:da:1e:cd:5f:a6:d6:d3:c3:a0:42:26:e1:
+                    a2:8c:8a:bc:05:44:98:83:ad
+                Exponent: 45509 (0xb1c5)
+    Signature Algorithm: sha1WithRSAEncryption
+         80:61:46:ce:eb:78:b8:30:f0:1e:e8:78:8e:5a:37:58:9c:2e:
+         be:99:a1:41:0e:4f:33:b4:f8:0e:34:8b:37:bf:bc:2b:02:61:
+         2e:0d:e1:ed:9d:dd:11:0b:5f:c4:13:e7:cb:36:fe:0c:18:12:
+         1f:5f:2b:2c:3d:a5:65:ad:6b:ba:1f:54:2e:4b:b4:b5:37:ec:
+         4b:dd:f8:e9:a8:2a:4c:e3:1f:a1:e7:d3:d6:a0:08:51:b9:04:
+         91:cb:08:45:ba:c3:11:f8:32:b7:f2:b8:f7:db:56:66:1e:18:
+         71:17:31:8b:7a:6f:62:39:3e:78:1c:a4:4a:23:90:bd:4d:ac:
+         3c:3b
+-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCiVlzZtZw6VUoKspM8KN9RkQ8g
+umiKBm1zYcOR43XP+7ldrvkZ3uDTaf0oiork5rSMkFU5/ifuRN04pNvEPbcaFnKw
+fpSo0paRQChpNQQmYqGeuzfS0FlwCqckpuGOudJdJaiNb2zKhEN5V9oezV+m1tPD
+oEIm4aKMirwFRJiDrQIDALHF
+-----END PUBLIC KEY-----
+-----BEGIN CERTIFICATE-----
+MIIBkjCB/AIBATANBgkqhkiG9w0BAQUFADASMRAwDgYDVQQDEwdJU0lDX1VUMB4X
+DTEyMTAwOTExNTgxM1oXDTEzMTAwOTExNTgxM1owEjEQMA4GA1UEAxMHSVNJQ19V
+VDCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAolZc2bWcOlVKCrKTPCjfUZEP
+ILpoigZtc2HDkeN1z/u5Xa75Gd7g02n9KIqK5Oa0jJBVOf4n7kTdOKTbxD23GhZy
+sH6UqNKWkUAoaTUEJmKhnrs30tBZcAqnJKbhjrnSXSWojW9syoRDeVfaHs1fptbT
+w6BCJuGijIq8BUSYg60CAwCxxTANBgkqhkiG9w0BAQUFAAOBgQCAYUbO63i4MPAe
+6HiOWjdYnC6+maFBDk8ztPgONIs3v7wrAmEuDeHtnd0RC1/EE+fLNv4MGBIfXyss
+PaVlrWu6H1QuS7S1N+xL3fjpqCpM4x+h59PWoAhRuQSRywhFusMR+DK38rj321Zm
+HhhxFzGLem9iOT54HKRKI5C9Taw8Ow==
+-----END CERTIFICATE-----
