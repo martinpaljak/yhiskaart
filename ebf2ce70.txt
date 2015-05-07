@@ -1,0 +1,274 @@
+** TagInfo scan (version 1.40) 2013-01-09 23:36:52 **
+
+# IC manufacturer:
+NXP Semiconductors
+
+# IC type:
+MIFARE Classic (MF1S50)
+
+# NFC Forum NDEF-enabled tag:
+Type MIFARE Tag
+
+# MIFARE applications:
+* NFC applications
+- NXP Semiconductors
+
+--------------------------------------
+
+# NFC data set information:
+Current message size: 254 bytes
+Maximum message size: 284 bytes
+NFC data set access: Read-Only
+
+# NFC Forum external type record:
+type: "pilet.ee:ekaart:2"
+
+payload length: 56 bytes
+payload data:
+[0000] 66 19 5F 26 06 31 32 30 |f._&.120|
+[0008] 38 32 32 59 04 20 20 20 |822Y.   |
+[0010] 20 5F 28 03 32 33 33 5F | _(.233_|
+[0018] 27 01 31 6E 1B 5A 13 33 |'.1n.Z.3|
+[0020] 30 38 36 34 39 30 30 39 |08649009|
+[0028] 30 30 30 32 36 36 34 30 |00026640|
+[0030] 30 35 53 04 EB F2 CE 70 |05S....p|
+
+# Signature record:
+type: "Sig"
+
+payload length: 172 bytes
+payload data:
+[0000] 01 02 00 80 3A 24 48 FC |....:$H.|
+[0008] A7 D3 54 A6 54 A8 1B D0 |..T.T...|
+[0010] 21 15 0D 1A 15 2D 1D F4 |!....-..|
+[0018] D7 A5 5D 2B 77 1F 12 F0 |..]+w...|
+[0020] 94 EA B6 E5 E1 0F 26 17 |......&.|
+[0028] A2 F8 DA D4 FD 38 AF F8 |.....8..|
+[0030] EA 39 B7 1C 19 BD 42 61 |.9....Ba|
+[0038] 8C DA 86 EE 7E 14 46 36 |....~.F6|
+[0040] C8 E0 E7 CF C4 09 6E 19 |......n.|
+[0048] C3 68 0E 09 C7 8A 0C DB |.h......|
+[0050] C0 5D A2 D6 98 E5 51 D5 |.]....Q.|
+[0058] D7 09 71 76 55 E5 6F E3 |..qvU.o.|
+[0060] 67 68 80 B8 97 D2 C7 0D |gh......|
+[0068] F5 F0 6E CE 07 C7 14 35 |..n....5|
+[0070] 25 51 44 F8 EE 41 AF 11 |%QD..A..|
+[0078] 0E 7B 18 0D A0 E6 C2 2F |.{...../|
+[0080] B8 FD EF 61 80 00 25 68 |...a..%h|
+[0088] 74 74 70 3A 2F 2F 70 69 |ttp://pi|
+[0090] 6C 65 74 2E 65 65 2F 63 |let.ee/c|
+[0098] 72 74 2F 33 30 38 36 34 |rt/30864|
+[00A0] 39 30 30 2D 30 30 30 31 |900-0001|
+[00A8] 2E 63 72 74             |.crt    |
+
+--------------------------------------
+
+# Memory size:
+1 kB
+* 16 sectors, with 4 blocks per sector
+* 64 blocks, with 16 bytes per block
+
+--------------------------------------
+
+# Technologies supported:
+MIFARE Classic compatible
+ISO/IEC 14443-3 (Type A) compatible
+ISO/IEC 14443-2 (Type A) compatible
+
+# Android technology information:
+android.nfc.tech.Ndef
+android.nfc.tech.MifareClassic
+android.nfc.tech.NfcA
+* Maximum transceive length: 253 bytes
+* Default maximum transceive time-out: 618 ms
+Tag description:
+* TAG: Tech [android.nfc.tech.MifareClassic, android.nfc.tech.NfcA, android.nfc.tech.Ndef]
+
+# Detailed protocol information:
+ID: EB:F2:CE:70
+ATQA: 0x0400
+SAK: 0x08
+
+# Memory content:
+Sector 0 (0x00)
+[00]  EB F2 CE 70 A7 08 04 00 |...p....|
+r--  62 63 64 65 66 67 68 69 |bcdefghi|
+[01]  B0 00 03 E1 03 E1 03 E1 |........|
+r--  03 E1 03 E1 03 E1 00 00 |........|
+[02]  00 00 00 00 00 00 00 00 |........|
+r--  00 00 00 00 00 00 00 00 |........|
+[03]  A0:A1:A2:A3:A4:A5  MAD access key
+WXW  0F:07:8F C1
+      XX:XX:XX:XX:XX:XX  (unknown key)
+
+Sector 1 (0x01)
+[04]  03 FF 01 01 94 11 38 70 |......8p|
+r--  69 6C 65 74 2E 65 65 3A |ilet.ee:|
+[05]  65 6B 61 61 72 74 3A 32 |ekaart:2|
+r--  66 19 5F 26 06 31 32 30 |f._&.120|
+[06]  38 32 32 59 04 20 20 20 |822Y.   |
+r--  20 5F 28 03 32 33 33 5F | _(.233_|
+[07]  D3:F7:D3:F7:D3:F7  Public NDEF key
+WXW  0F:07:8F 41
+      XX:XX:XX:XX:XX:XX  (unknown key)
+
+Sector 2 (0x02)
+[08]  27 01 31 6E 1B 5A 13 33 |'.1n.Z.3|
+r--  30 38 36 34 39 30 30 39 |08649009|
+[09]  30 30 30 32 36 36 34 30 |00026640|
+r--  30 35 53 04 EB F2 CE 70 |05S....p|
+[0A]  41 03 00 00 00 AC 53 69 |A.....Si|
+r--  67 01 02 00 80 3A 24 48 |g....:$H|
+[0B]  D3:F7:D3:F7:D3:F7  Public NDEF key
+WXW  0F:07:8F 41
+      XX:XX:XX:XX:XX:XX  (unknown key)
+
+Sector 3 (0x03)
+[0C]  FC A7 D3 54 A6 54 A8 1B |...T.T..|
+r--  D0 21 15 0D 1A 15 2D 1D |.!....-.|
+[0D]  F4 D7 A5 5D 2B 77 1F 12 |...]+w..|
+r--  F0 94 EA B6 E5 E1 0F 26 |.......&|
+[0E]  17 A2 F8 DA D4 FD 38 AF |......8.|
+r--  F8 EA 39 B7 1C 19 BD 42 |..9....B|
+[0F]  D3:F7:D3:F7:D3:F7  Public NDEF key
+WXW  0F:07:8F 41
+      XX:XX:XX:XX:XX:XX  (unknown key)
+
+Sector 4 (0x04)
+[10]  61 8C DA 86 EE 7E 14 46 |a....~.F|
+r--  36 C8 E0 E7 CF C4 09 6E |6......n|
+[11]  19 C3 68 0E 09 C7 8A 0C |..h.....|
+r--  DB C0 5D A2 D6 98 E5 51 |..]....Q|
+[12]  D5 D7 09 71 76 55 E5 6F |...qvU.o|
+r--  E3 67 68 80 B8 97 D2 C7 |.gh.....|
+[13]  D3:F7:D3:F7:D3:F7  Public NDEF key
+WXW  0F:07:8F 41
+      XX:XX:XX:XX:XX:XX  (unknown key)
+
+Sector 5 (0x05)
+[14]  0D F5 F0 6E CE 07 C7 14 |...n....|
+r--  35 25 51 44 F8 EE 41 AF |5%QD..A.|
+[15]  11 0E 7B 18 0D A0 E6 C2 |..{.....|
+r--  2F B8 FD EF 61 80 00 25 |/...a..%|
+[16]  68 74 74 70 3A 2F 2F 70 |http://p|
+r--  69 6C 65 74 2E 65 65 2F |ilet.ee/|
+[17]  D3:F7:D3:F7:D3:F7  Public NDEF key
+WXW  0F:07:8F 41
+      XX:XX:XX:XX:XX:XX  (unknown key)
+
+Sector 6 (0x06)
+[18]  63 72 74 2F 33 30 38 36 |crt/3086|
+r--  34 39 30 30 2D 30 30 30 |4900-000|
+[19]  31 2E 63 72 74 FE 00 00 |1.crt...|
+r--  00 00 00 00 00 00 00 00 |........|
+[1A]  00 00 00 00 00 00 00 00 |........|
+r--  00 00 00 00 00 00 00 00 |........|
+[1B]  D3:F7:D3:F7:D3:F7  Public NDEF key
+WXW  0F:07:8F 41
+      XX:XX:XX:XX:XX:XX  (unknown key)
+
+Sector 7 (0x07)
+[1C]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[1D]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[1E]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[1F]  FF:FF:FF:FF:FF:FF  Factory default key
+wxx  FF:07:80 69
+(r)  FF:FF:FF:FF:FF:FF  Factory default key
+
+Sector 8 (0x08)
+[20]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[21]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[22]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[23]  FF:FF:FF:FF:FF:FF  Factory default key
+wxx  FF:07:80 69
+(r)  FF:FF:FF:FF:FF:FF  Factory default key
+
+Sector 9 (0x09)
+[24]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[25]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[26]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[27]  FF:FF:FF:FF:FF:FF  Factory default key
+wxx  FF:07:80 69
+(r)  FF:FF:FF:FF:FF:FF  Factory default key
+
+Sector 10 (0x0A)
+[28]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[29]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[2A]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[2B]  FF:FF:FF:FF:FF:FF  Factory default key
+wxx  FF:07:80 69
+(r)  FF:FF:FF:FF:FF:FF  Factory default key
+
+Sector 11 (0x0B)
+[2C]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[2D]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[2E]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[2F]  FF:FF:FF:FF:FF:FF  Factory default key
+wxx  FF:07:80 69
+(r)  FF:FF:FF:FF:FF:FF  Factory default key
+
+Sector 12 (0x0C)
+[30]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[31]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[32]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[33]  FF:FF:FF:FF:FF:FF  Factory default key
+wxx  FF:07:80 69
+(r)  FF:FF:FF:FF:FF:FF  Factory default key
+
+Sector 13 (0x0D)
+[34]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[35]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[36]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[37]  FF:FF:FF:FF:FF:FF  Factory default key
+wxx  FF:07:80 69
+(r)  FF:FF:FF:FF:FF:FF  Factory default key
+
+Sector 14 (0x0E)
+[38]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[39]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[3A]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[3B]  FF:FF:FF:FF:FF:FF  Factory default key
+wxx  FF:07:80 69
+(r)  FF:FF:FF:FF:FF:FF  Factory default key
+
+Sector 15 (0x0F)
+[3C]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[3D]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[3E]  00 00 00 00 00 00 00 00 |........|
+rwi  00 00 00 00 00 00 00 00 |........|
+[3F]  FF:FF:FF:FF:FF:FF  Factory default key
+wxx  FF:07:80 69
+(r)  FF:FF:FF:FF:FF:FF  Factory default key
+r/R=read, w/W=write, i/I=increment,
+d=decr/transfer/restore, x=r+w, X=R+W
+data block: r/w/i/d:key A|B, R/W/I:key B only,
+  I/i implies d, *=value block
+trailer (order: key A, AC, key B): r/w:key A,
+  W:key B, R:key A|B, (r)=readable key
+AC: W implies R+r, R implies r
