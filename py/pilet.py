@@ -14,16 +14,16 @@ def fetch_card_content(cardnr):
   result = ""
 
   headers = {'User-Agent': 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; Media Center PC 6.0; InfoPath.3; MS-RTC LM 8; Zune 4.7)'}
-  values = {'idcode': cardnr}
+  values = {'active_tickets_filter[card_id]': cardnr}
   data = urllib.urlencode(values)
-  url = 'https://www.pilet.ee/cgi-bin/splususer/splususer.cgi?op=checkbyid'
+  url = 'https://www.pilet.ee/viipe/uhiskaart/activetickets?active_tickets_filter_set&ticket_sale_detail_start=0'
   req = urllib2.Request(url, data, headers)
   response = urllib2.urlopen(req)
   page = response.read()
 
-  raha = page.find('Kaardi raha jääk ')
+  raha = page.find('Summa kaardil: ')
   if raha != -1:
-    m = re.findall(r"Kaardi raha jääk (-*[\.0-9]*) EUR", page)
+    m = re.findall(r"Summa kaardil: (-*[\.0-9]*) €", page)
     if len(m) == 1:
       result = m[0] + " EUR "
   else:
